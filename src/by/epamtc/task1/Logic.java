@@ -1,5 +1,7 @@
 package by.epamtc.task1;
 
+import static by.epamtc.service.CharToString.charToString;
+
 public class Logic {
 
     public static String changeLetterCharRealization(String string, int k, char symbol) {
@@ -81,14 +83,6 @@ public class Logic {
         } else if (k < 0) {
             //throw exception "Number of the position must be positive"
         }
-    }
-
-
-    private static String charToString(char[] line) {
-        StringBuilder builder = new StringBuilder();
-        builder.append(line);
-        String result = builder.toString();
-        return result;
     }
 
     private static boolean isLetter(char symbol) {
