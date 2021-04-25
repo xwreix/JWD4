@@ -1,6 +1,6 @@
 package by.epamtc.task2;
 
-import static by.epamtc.service.CharToString.charToString;
+import by.epamtc.service.CharService;
 
 public class Logic {
 
@@ -14,7 +14,7 @@ public class Logic {
             }
         }
 
-        String result = charToString(line);
+        String result = CharService.charToString(line);
 
         return result;
     }

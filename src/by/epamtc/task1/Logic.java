@@ -1,6 +1,7 @@
 package by.epamtc.task1;
 
-import static by.epamtc.service.CharToString.charToString;
+
+import by.epamtc.service.CharService;
 
 public class Logic {
 
@@ -11,7 +12,7 @@ public class Logic {
 
         int length = 0;
         for (int i = 0; i < line.length; i++) {
-            if (isLetter(line[i])) {
+            if (CharService.isLetter(line[i])) {
                 length++;
             } else {
                 length = 0;
@@ -20,7 +21,7 @@ public class Logic {
                 line[i] = symbol;
             }
         }
-        String result = charToString(line);
+        String result = CharService.charToString(line);
         return result;
     }
 
@@ -29,52 +30,42 @@ public class Logic {
 
         StringBuilder builder = new StringBuilder();
         StringBuilder word = new StringBuilder();
-        int i = 0;
+        line = line.concat("/");
 
-        while (i < line.length()) {
-
-            while (isLetter(line.charAt(i))) {
+        for (int i = 0; i < line.length(); i++) {
+            if (CharService.isLetter(line.charAt(i))) {
                 word.append(line.charAt(i));
-
-                if (i != line.length() - 1) {
-                    i++;
-                } else {
-                    break;
-                }
-
-            }
-
-            if (word.length() >= k) {
-                builder.append(word, 0, k - 1).append(symbol).append((word.substring(k)));
-
+            } else if (word.length() >= k) {
+                builder.append(word, 0, k - 1).append(symbol).
+                        append((word.substring(k))).append(line.charAt(i));
+                word = new StringBuilder();
             } else if (word.length() >= 1) {
-                builder.append(word);
+                builder.append(word).append(line.charAt(i));
+                word = new StringBuilder();
+            } else {
+                builder.append(line.charAt(i));
             }
-
-            builder.append(line.charAt(i));
-            i++;
-            word = new StringBuilder("");
         }
 
+        builder.deleteCharAt(builder.length() - 1);
         return builder.toString();
     }
 
     public static String changeLetterRegexRealization(String line, int k, char symbol) {
         checker(line, k);
-        StringBuilder builder = new StringBuilder();
+
+        char[] r = {symbol};
+        String replacement = CharService.charToString(r);
 
         for (String word : line.split("\\W+")) {
-
             if (word.length() >= k) {
-                builder.append(word, 0, k - 1).append(symbol).append(word.substring(k));
-            } else {
-                builder.append(word);
+                StringBuilder builder = new StringBuilder(word);
+                builder.replace(k - 1, k, replacement);
+                line = line.replaceFirst("\\b" + word + "\\b", builder.toString());
             }
-
-            builder.append(" ");
         }
 
-        return builder.toString();
+        return line;
     }
 
     private static void checker(String line, int k) {
@@ -83,16 +74,6 @@ public class Logic {
         } else if (k < 0) {
             //throw exception "Number of the position must be positive"
         }
-    }
-
-    private static boolean isLetter(char symbol) {
-        boolean result = false;
-
-        if (symbol >= 'A' && symbol <= 'Z' || symbol >= 'a' && symbol <= 'z') {
-            result = true;
-        }
-
-        return result;
     }
 }
 

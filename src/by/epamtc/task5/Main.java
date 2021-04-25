@@ -1,4 +1,4 @@
-package by.epamtc.task1;
+package by.epamtc.task5;
 
 import by.epamtc.service.DataScanner;
 
@@ -13,8 +13,8 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(Logic.changeLetterCharRealization(line, 2, 'p') + "\n");
-        System.out.println(Logic.changeLetterStringRealization(line, 1, 'q') + "\n");
-        System.out.println(Logic.changeLetterRegexRealization(line, 3, 'w') + "\n");
+        System.out.println(Logic.deleteWordsCharRealization(line, 2) + "\n");
+        System.out.println(Logic.deleteWordsStringRealization(line, 3) + "\n");
+        System.out.println(Logic.deleteWordsRegexRealization(line, 4) + "\n");
     }
 }
