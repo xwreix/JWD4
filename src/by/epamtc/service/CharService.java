@@ -10,6 +10,7 @@ public class CharService {
         String result = builder.toString();
         return result;
     }
+
     public static String charToString(ArrayList<Character> array) {
         StringBuilder builder = new StringBuilder();
         for (Character x : array) {

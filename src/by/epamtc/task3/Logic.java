@@ -4,6 +4,7 @@ import by.epamtc.service.CharService;
 
 import java.util.ArrayList;
 
+//В тексте слова заданной длины заменить указанной подстрокой, длина которой может не совпадать с длиной слова
 public class Logic {
 
     public static String replaceWordCharRealization(String string, String replacementString, int length) {
@@ -32,6 +33,7 @@ public class Logic {
 
         builder.remove(builder.size() - 1);
         String result = CharService.charToString(builder);
+
         return result;
     }
 
@@ -58,6 +60,7 @@ public class Logic {
         }
 
         builder.deleteCharAt(builder.length() - 1);
+
         return builder.toString();
     }
 

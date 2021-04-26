@@ -1,8 +1,8 @@
 package by.epamtc.task1;
 
-
 import by.epamtc.service.CharService;
 
+//В каждом слове k-ю букву заменить заданным символом. Если k больше длины слова, корректировку не выполнять.
 public class Logic {
 
     public static String changeLetterCharRealization(String string, int k, char symbol) {
@@ -54,14 +54,10 @@ public class Logic {
     public static String changeLetterRegexRealization(String line, int k, char symbol) {
         checker(line, k);
 
-        char[] r = {symbol};
-        String replacement = CharService.charToString(r);
-
         for (String word : line.split("\\W+")) {
             if (word.length() >= k) {
-                StringBuilder builder = new StringBuilder(word);
-                builder.replace(k - 1, k, replacement);
-                line = line.replaceFirst("\\b" + word + "\\b", builder.toString());
+                line = line.replaceFirst("\\b" + word + "\\b",
+                        word.substring(0, k - 1) + symbol + word.substring(k));
             }
         }
 

@@ -4,6 +4,7 @@ import by.epamtc.service.CharService;
 
 import java.util.ArrayList;
 
+//Из текста удалить все слова заданной длины, начинающиеся на согласную букву
 public class Logic {
 
     public static String deleteWordsCharRealization(String string, int length) {
@@ -26,6 +27,7 @@ public class Logic {
         }
 
         String result = CharService.charToString(builder);
+
         return result;
     }
 
@@ -52,6 +54,7 @@ public class Logic {
         }
 
         builder.deleteCharAt(builder.length() - 1);
+
         return builder.toString();
     }
 
@@ -78,13 +81,5 @@ public class Logic {
     private static boolean isConsonant(char x) {
         return x != 'A' && x != 'a' && x != 'E' && x != 'e' && x != 'I' && x != 'i' &&
                 x != 'O' && x != 'o' && x != 'U' && x != 'u' && x != 'Y' && x != 'y';
-    }
-
-    private static ArrayList<Character> stringToList(String line) {
-        ArrayList<Character> result = new ArrayList<>();
-        for (int i = 0; i < line.length(); i++) {
-            result.add(line.charAt(i));
-        }
-        return result;
     }
 }

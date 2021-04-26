@@ -4,6 +4,8 @@ import by.epamtc.service.CharService;
 
 import java.util.ArrayList;
 
+//Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами.
+//Между последовательностями подряд идущих букв оставить хотя бы один пробел
 public class Logic {
 
     public static String deleteSymbolsCharRealization(String string) {

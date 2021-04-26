@@ -2,6 +2,7 @@ package by.epamtc.task2;
 
 import by.epamtc.service.CharService;
 
+//В тексте после буквы Р, если она не последняя в слове, ошибочно напечатана буква А вместо О. Внести исправления в текст
 public class Logic {
 
     public static String correctMistakeCharRealization(String string) {
@@ -21,6 +22,7 @@ public class Logic {
 
     public static String correctMistakeStringRealization(String line) {
         checker(line);
+
         StringBuilder builder = new StringBuilder();
 
         for (int i = 0; i < line.length() - 1; i++) {
@@ -30,7 +32,8 @@ public class Logic {
                 i++;
             }
         }
-        builder.append(line.charAt(line.length()-1));
+
+        builder.append(line.charAt(line.length() - 1));
 
         return builder.toString();
     }
